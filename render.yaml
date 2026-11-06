@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: meetflow-assistant
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: ASSEMBLYAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
